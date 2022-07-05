@@ -1,13 +1,19 @@
 import axios from "axios";
-import { QuoteType } from "../type/quoteType";
+import { QuoteType } from "../types/quoteType";
 
-const getQuote =async () => {
-  return axios.get("http://localhost:3030/quote")
-  .then(res => res.data);
+const getQuote = async () => {
+
+  console.log(`${process.env.API_URL}/quote`)
+
+  return axios.get(`${process.env.API_URL}/quote`)
+  .then(res => res.data)
+  .catch((Error) => {
+    console.log(Error)
+  })
 };
 
 const createQuote = async (content: string, author: string): Promise<QuoteType> => {
-  return axios.post("http://localhost:3030/quote", {
+  return axios.post(`${process.env.API_URL}/quote`, {
     content,
     author
   })

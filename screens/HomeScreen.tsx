@@ -1,8 +1,8 @@
-import { Button, ScrollView, ScrollViewBase, StyleSheet } from "react-native";
+import {ScrollView, StyleSheet } from "react-native";
 
 import { Image } from "react-native";
 import DialogBox from "../components/DialogBox";
-import { Text, View } from "../components/Themed";
+import { View } from "../components/Themed";
 
 
 const HomeScreen = () => {
@@ -10,16 +10,9 @@ const HomeScreen = () => {
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         <Image
-            style={styles.image}
-            source={require('../assets/images/yuuka.png')} />
+          style={styles.image}
+          source={require('../assets/images/yuuka.png')} />
         <DialogBox />
-        <View 
-          style={styles.buttonContainer}
-          lightColor="transparent"
-          darkColor="transparent">
-          <Button
-            title="Next Quote"/>
-        </View>
       </View>
     </ScrollView>
 
@@ -40,10 +33,6 @@ const styles = StyleSheet.create({
   image: {
     width: 150,
     height: 150,
-  },
-  buttonContainer: {
-    marginBottom: 64,
-    paddingTop: 32,
   },
 })
 

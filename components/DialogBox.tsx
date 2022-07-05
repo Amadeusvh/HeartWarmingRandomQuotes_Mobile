@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 import {View, Text} from '../components/Themed';
 import QuoteService from '../services/quoteServices';
-import { QuoteType } from '../type/quoteType';
+import { QuoteType } from '../types/quoteType';
 
 const DialogBox = () => {
 
@@ -20,23 +20,32 @@ const DialogBox = () => {
 
   return (
     <View style={styles.dialogBoxContainer}>
-      <Text
-        style={styles.titleText}>
+      <Text style={styles.titleText}>
         Yuuka Says:
       </Text>
-      <Text 
-        style={styles.quoteText}>
-        {quote?.content} asuhduiashdiuahsdiuahsd
+      <Text style={styles.quoteText}>
+        {quote?.content}
       </Text>
-      <Text 
-        style={styles.quoteAuthor}>
-        ~{quote?.author}Netinho da vila~
+      <Text style={styles.quoteAuthor}>
+        ~{quote?.author}~
       </Text>
+      <View style={styles.button}>
+        <Button 
+          onPress={nextQuote}
+          title="Next Quote"
+        />
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  button: {
+    margin: 8,
+    marginTop: 24,
+    alignSelf: 'flex-end',
+    width: '60%',
+  },
   dialogBoxContainer: {
     borderWidth: 4,
     borderRadius: 8,
@@ -63,6 +72,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   quoteAuthor: {
+    color: 'white',
     alignSelf: 'flex-end',
     fontStyle: 'italic',
   },

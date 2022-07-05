@@ -15,8 +15,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import CreateQuote from '../screens/CreateQuoteScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -85,13 +84,14 @@ function BottomTabNavigator() {
           ),
         })}
       />
-      <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        })}
+      <BottomTab.Screen 
+        name="CreateQuote"
+        component={CreateQuote}
+        options={({ navigation }: RootTabScreenProps<'CreateQuote'>) => ({
+          title: 'Create a new Quote',
+          tabBarIcon: ({ color }) => <TabBarIcon name="plus-circle" color={color} />
+        })
+        }
       />
     </BottomTab.Navigator>
   );
