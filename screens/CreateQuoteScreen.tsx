@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Button, StyleSheet, TextInput } from "react-native";
+import {Button, ScrollView, StyleSheet, TextInput } from "react-native";
 
 import { Text, View} from "../components/Themed";
 import QuoteService from "../services/quoteServices";
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   input: {
-    backgroundColor: 'rgb(156, 156, 156, 1)',
+    backgroundColor: 'rgb(255, 255, 255)',
     minWidth: '70%',
     maxWidth: '70%',
     borderRadius: 8,
