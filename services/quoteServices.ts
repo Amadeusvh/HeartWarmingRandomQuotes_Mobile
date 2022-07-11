@@ -1,11 +1,13 @@
 import axios from "axios";
 import { QuoteType } from "../types/quoteType";
 
-const getQuote = async () => {
+const Adress = 'http://192.168.101.3:3030'
 
-  console.log(`${process.env.API_URL}/quote`)
+const getQuote = async (): Promise<QuoteType> =>  {
 
-  return axios.get(`${process.env.API_URL}/quote`)
+  console.log(`${Adress}/quote`)
+
+  return axios.get(`${Adress}/quote`)
   .then(res => res.data)
   .catch((Error) => {
     console.log(Error)
@@ -13,7 +15,7 @@ const getQuote = async () => {
 };
 
 const createQuote = async (content: string, author: string): Promise<QuoteType> => {
-  return axios.post(`${process.env.API_URL}/quote`, {
+  return axios.post(`${Adress}/quote`, {
     content,
     author
   })
