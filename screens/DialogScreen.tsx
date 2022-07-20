@@ -5,7 +5,7 @@ import QuoteService from '../services/quoteServices';
 import { QuoteType } from '../types/quoteType';
 
 
-const DialogBox = () => {
+const DialogScreen = () => {
 
   const scrollViewRef = useRef<any>();
 
@@ -33,8 +33,8 @@ const DialogBox = () => {
           ref={scrollViewRef}
           onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}
         >
-          {quotes.map((quote) =>
-            <View style={styles.quotesContainer}>
+          {quotes.map((quote, i) =>
+            <View style={styles.quotesContainer} key={i}>
               <View style={styles.quoteBox}>
                 <Text style={styles.quoteText}>
                   {quote?.content}
@@ -114,4 +114,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default DialogBox
+export default DialogScreen

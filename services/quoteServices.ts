@@ -1,7 +1,7 @@
 import axios from "axios";
 import { QuoteType } from "../types/quoteType";
 
-const Adress = 'http://192.168.101.3:3030'
+const Adress = 'http://192.168.101.2:3030'
 
 const getQuote = async (): Promise<QuoteType> =>  {
 

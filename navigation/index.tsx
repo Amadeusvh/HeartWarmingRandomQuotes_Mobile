@@ -13,8 +13,7 @@ import { ColorSchemeName, Image, Pressable} from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
-import ModalScreen from '../screens/ModalScreen';
-import NotFoundScreen from '../screens/NotFoundScreen';
+import DialogScreen from '../screens/DialogScreen';
 import CreateQuote from '../screens/CreateQuoteScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -39,11 +38,40 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
+      <Stack.Screen name="Home" component={HomeScreen} 
+        options={{ 
+          headerTitle: () => (
+            <Text 
+              style={{ 
+                fontSize: 26, 
+                letterSpacing: 8,
+                fontWeight: 'bold' 
+              }}
+            >HWRQ</Text>
+          ),
+         }} 
+      />
+      <Stack.Screen name="Dialog" component={DialogScreen} 
+        options={{ 
+          headerTitle: () => (
+            <Text style={{ fontSize: 22 }}>Yuuka Kazami</Text>
+          ),
+          animation: 'fade'
+        }}
+      />
+      <Stack.Screen name="CreateQuote" component={CreateQuote} 
+        options={{
+          headerTitle: () => (
+            <Text 
+              style={{ 
+                fontSize: 22,
+                fontWeight: 'bold' 
+              }}
+            >Create a new Quote</Text>
+          ),
+          animation: 'fade'
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -52,6 +80,7 @@ function RootNavigator() {
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
+
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
@@ -99,7 +128,7 @@ function BottomTabNavigator() {
                 opacity: pressed ? 0.5 : 1,
               })}>
               <FontAwesome
-                name="info-circle"
+                name="plus-circle"
                 size={25}
                 color={Colors[colorScheme].text}
                 style={{ marginRight: 15 }}
