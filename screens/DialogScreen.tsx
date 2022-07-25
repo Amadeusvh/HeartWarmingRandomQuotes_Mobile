@@ -48,14 +48,12 @@ const DialogScreen = () => {
         </ScrollView>
       </ImageBackground>
       <View style={styles.buttonContainer}>
-        <View style={styles.button}>
-          <Pressable
-            style={styles.button}
-            onPress={nextQuote}
-          >
-            <Text style={styles.buttonText}>Next Quote</Text>
-          </Pressable>
-        </View>
+        <Pressable
+          style={styles.button}
+          onPress={nextQuote}
+        >
+          <Text style={styles.buttonText}>Next Quote</Text>
+        </Pressable>
       </View>
     </View>
   )
@@ -98,7 +96,7 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 8,
     margin: 8,
-    padding: 2,
+    padding: 8,
     backgroundColor: '#72b34f',
     alignItems: 'center',
   },

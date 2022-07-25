@@ -9,6 +9,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Image, Pressable} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -18,6 +19,7 @@ import CreateQuote from '../screens/CreateQuoteScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import { Text, View } from '../components/Themed';
+import ModalScreen from '../screens/ModalScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -36,6 +38,8 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  const colorScheme = useColorScheme();
+
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} 
@@ -52,12 +56,35 @@ function RootNavigator() {
          }} 
       />
       <Stack.Screen name="Dialog" component={DialogScreen} 
-        options={{ 
+        options={( {navigation}: RootTabScreenProps<'Dialog'>) => ({ 
           headerTitle: () => (
             <Text style={{ fontSize: 22 }}>Yuuka Kazami</Text>
           ),
-          animation: 'fade'
-        }}
+          animation: 'fade',
+          headerLeft: () => (
+            <Pressable
+              onPress={() => navigation.goBack()}
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'row',
+                padding: 2,
+                marginRight: 8,
+                marginLeft: -8,
+                borderRadius: 100,
+              }}
+            >
+              <Image 
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 100,
+                }}
+                source={require('../assets/images/yuuka.png')}
+              />
+            </Pressable>
+          ),
+        })}
       />
       <Stack.Screen name="CreateQuote" component={CreateQuote} 
         options={{
@@ -68,6 +95,19 @@ function RootNavigator() {
                 fontWeight: 'bold' 
               }}
             >Create a new Quote</Text>
+          ),
+          animation: 'fade'
+        }}
+      />
+      <Stack.Screen name="Modal" component={ModalScreen} 
+        options={{
+          headerTitle: () => (
+            <Text 
+              style={{ 
+                fontSize: 22,
+                fontWeight: 'bold' 
+              }}
+            >About</Text>
           ),
           animation: 'fade'
         }}
